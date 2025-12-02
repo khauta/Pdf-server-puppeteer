@@ -26,9 +26,10 @@ router.post('/generate', async (req, res, next) => {
             .set({
             'Content-Type': 'application/pdf',
             'Content-Disposition': `attachment; filename="${filename}"`,
+            'Content-Length': pdfBuffer.length.toString(),
             'Cache-Control': 'no-cache',
         })
-            .send(pdfBuffer);
+            .end(pdfBuffer, 'binary');
     }
     catch (err) {
         next(err);

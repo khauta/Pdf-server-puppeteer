@@ -17,7 +17,7 @@ const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3000;
 // Middleware
 app.use((0, cors_1.default)());
-app.use(express_1.default.json({ limit: '50mb' })); // Increased limit for large HTML
+app.use(express_1.default.json({ limit: '50mb', type: 'application/json' })); // Only parse JSON for application/json
 app.use((0, pino_http_1.default)());
 // Health check (public)
 app.use('/health', (0, express_healthcheck_1.default)());
